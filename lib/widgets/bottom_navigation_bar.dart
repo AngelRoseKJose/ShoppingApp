@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shopping_app_sample/constants/color_constants.dart';
 final ValueNotifier indexChangeNotifier=ValueNotifier(0);
 
@@ -8,17 +9,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(valueListenable: indexChangeNotifier,builder: (context, newIndex , child) {
-      return BottomNavigationBar(onTap: (index){indexChangeNotifier.value=index;},
-        currentIndex: newIndex,
-        selectedItemColor: ColorConstants.selectionColor,
-        unselectedItemColor: ColorConstants.secondaryColor,
-        backgroundColor: ColorConstants.primaryColor,
-        items: const
-      [BottomNavigationBarItem(icon: Icon(Icons.home),label:'Home',),
-      BottomNavigationBarItem(icon: Icon(Icons.favorite),label:'favourites'),
-      BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label:'cart')]);}
-     
-    );
+     return Container(color: ColorConstants.primaryColor,child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [IconButton(onPressed: (){context.goNamed('home');}, icon: Icon(Icons.home,color: ColorConstants.secondaryColor,)),
+    IconButton(onPressed: (){context.goNamed('favourites');}, icon: Icon(Icons.favorite,color: ColorConstants.secondaryColor)),
+    IconButton(onPressed: (){context.goNamed('cart');}, icon: Icon(Icons.shopping_cart,color: ColorConstants.secondaryColor))],),);
   }
 }

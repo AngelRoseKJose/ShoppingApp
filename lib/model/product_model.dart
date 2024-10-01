@@ -4,12 +4,11 @@ part 'product_model.g.dart';
 
 @JsonSerializable()
 class Dimensions {
-
   @JsonKey(name: 'width')
   final double width;
-   @JsonKey(name: 'height')
+  @JsonKey(name: 'height')
   final double height;
-   @JsonKey(name: 'depth')
+  @JsonKey(name: 'depth')
   final double depth;
 
   Dimensions({required this.width, required this.height, required this.depth});
@@ -46,7 +45,6 @@ class Review {
 
 @JsonSerializable()
 class Product {
-
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'title')
@@ -66,7 +64,7 @@ class Product {
   @JsonKey(name: 'tags')
   final List<String> tags;
   @JsonKey(name: 'brand')
-  final String brand;
+  final String? brand;
   @JsonKey(name: 'sku')
   final String sku;
   @JsonKey(name: 'weight')
